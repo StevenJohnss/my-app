@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {FilterContextComp} from './filter-context';
+import FilterComponent from './filter-component';
+import MainPage from"./main-page"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
+  // const filter = useContext(FilterContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Router >
+    <FilterContextComp>
+    <Routes>
+    <Route exact path="/" element={<FilterComponent name={"test1"}/>}/>
+    <Route exact path="/TableB" element={<FilterComponent name={"test2"}/>}/>
+    </Routes>
+    <MainPage/>
+    </FilterContextComp>
+    </Router>
+    
+    
+    </>
   );
 }
 
